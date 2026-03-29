@@ -1,0 +1,255 @@
+.rich-text-editor {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #0a0a0a;
+}
+
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 4px;
+}
+
+.toolbar-divider {
+  width: 1px;
+  background-color: #333;
+  margin: 0 4px;
+}
+
+.editor-toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.editor-toolbar button:hover {
+  background-color: #2a2a2a;
+}
+
+.editor-toolbar button:active {
+  transform: scale(0.95);
+}
+
+.editor-toolbar button.is-active {
+  background-color: #ff9000;
+  color: #000;
+}
+
+.editor-toolbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.editor-toolbar button:disabled:hover {
+  background-color: transparent;
+}
+
+.editor-content {
+  padding: 20px;
+  min-height: 400px;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: #0a0a0a;
+}
+
+/* Tiptap editor styles */
+.editor-content .ProseMirror {
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.editor-content .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #666;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.editor-content .ProseMirror h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+.editor-content .ProseMirror h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+.editor-content .ProseMirror h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+.editor-content .ProseMirror p {
+  margin-bottom: 1em;
+}
+
+.editor-content .ProseMirror strong {
+  font-weight: bold;
+}
+
+.editor-content .ProseMirror em {
+  font-style: italic;
+}
+
+.editor-content .ProseMirror code {
+  background-color: #1a1a1a;
+  color: #ff9000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.editor-content .ProseMirror pre {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 12px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.editor-content .ProseMirror pre code {
+  background-color: transparent;
+  color: #fff;
+  padding: 0;
+}
+
+.editor-content .ProseMirror ul,
+.editor-content .ProseMirror ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.editor-content .ProseMirror ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5em;
+}
+
+.editor-content .ProseMirror ol li {
+  list-style-type: decimal;
+  margin-bottom: 0.5em;
+}
+
+.editor-content .ProseMirror blockquote {
+  border-left: 4px solid #ff9000;
+  padding-left: 16px;
+  margin-left: 0;
+  margin-right: 0;
+  color: #ccc;
+  font-style: italic;
+}
+
+.editor-content .ProseMirror a {
+  color: #ff9000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.editor-content .ProseMirror a:hover {
+  color: #ffa31a;
+}
+
+.editor-content .ProseMirror .editor-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1em 0;
+}
+
+/* Scrollbar styling */
+.editor-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-content::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.editor-content::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.editor-content::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .editor-toolbar {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .editor-toolbar button {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .toolbar-divider {
+    display: none;
+  }
+
+  .editor-content {
+    padding: 15px;
+    min-height: 300px;
+  }
+
+  .editor-content .ProseMirror {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editor-toolbar {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .editor-toolbar button {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .editor-content {
+    padding: 12px;
+    min-height: 250px;
+  }
+}

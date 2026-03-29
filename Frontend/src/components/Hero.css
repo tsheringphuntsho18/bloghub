@@ -1,0 +1,174 @@
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  padding: 4rem 0;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.logo-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-size: 3.5rem;
+  font-weight: bold;
+  vertical-align: baseline;
+}
+
+.logo-blog {
+  color: #ffffff;
+  background-color: #000000;
+  padding: 0.15em 0.3em;
+  border-radius: 6px 0 0 6px;
+}
+
+.logo-hub {
+  color: #000000;
+  background-color: #ffa31a;
+  padding: 0.15em 0.3em;
+  border-radius: 0 10px 10px 0;
+}
+
+.highlight {
+  color: #ff9000;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #cccccc;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #999999;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-get-started {
+  padding: 1rem 3rem;
+  background-color: #ff9000;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 144, 0, 0.3);
+}
+
+.btn-get-started:hover {
+  background-color: #ffaa00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 144, 0, 0.4);
+}
+
+.btn-get-started:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero-container {
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .logo-text {
+    font-size: 2.5rem;
+  }
+
+  .logo-blog,
+  .logo-hub {
+    padding: 0.12em 0.25em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .btn-get-started {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 1.5rem 0;
+  }
+
+  .hero-container {
+    padding: 0 0.75rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .logo-text {
+    font-size: 1.75rem;
+  }
+
+  .logo-blog,
+  .logo-hub {
+    padding: 0.1em 0.2em;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-get-started {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    width: 90%;
+    max-width: 250px;
+  }
+}
