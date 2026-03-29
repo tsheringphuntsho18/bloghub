@@ -3,9 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => {
-  // When running locally in dev, we still listen on all interfaces so remote services (or Docker)
-  // can reach the dev server if needed. For production preview (used by Render) we also
-  // bind to 0.0.0.0 and respect the PORT env var.
   const port = Number(process.env.PORT) || 5173
 
   return {
@@ -13,12 +10,20 @@ export default defineConfig(({ command }) => {
     server: {
       host: '0.0.0.0',
       port,
-      strictPort: false
+      strictPort: false,
+      // Move allowedHosts inside the server object here
+      allowedHosts: [
+        'bloghub-wgow.onrender.com'
+      ]
     },
     preview: {
       host: '0.0.0.0',
       port,
-      strictPort: true
+      strictPort: true,
+      // It's a good idea to add it here too if you're using 'vite preview'
+      allowedHosts: [
+        'bloghub-wgow.onrender.com'
+      ]
     }
   }
 })
