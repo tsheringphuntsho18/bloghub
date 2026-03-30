@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { supabase } from '../supabaseClient'
 import { toast } from 'react-toastify'
 import DashboardHeader from '../components/DashboardHeader'
-import RichTextEditor from '../components/RichTextEditor'
+const RichTextEditor = React.lazy(() => import('../components/RichTextEditor'))
 import slugify from 'slugify'
 import { FaSave, FaEye, FaTimes, FaImage } from 'react-icons/fa'
 import './CreateEditPost.css'
@@ -324,10 +324,12 @@ const CreateEditPost = () => {
               <label>
                 Content <span className="required">*</span>
               </label>
-              <RichTextEditor 
-                content={content}
-                onChange={setContent}
-              />
+              <React.Suspense fallback={<div>Loading editor...</div>}>
+                <RichTextEditor 
+                  content={content}
+                  onChange={setContent}
+                />
+              </React.Suspense>
             </div>
 
             {/* Excerpt */}

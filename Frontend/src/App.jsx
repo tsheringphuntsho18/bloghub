@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -7,28 +7,32 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import MyPosts from './pages/MyPosts'
-import CreateEditPost from './pages/CreateEditPost'
-import ViewPost from './pages/ViewPost'
-import Profile from './pages/Profile'
-import Settings from './pages/Settings'
 import './App.css'
+
+const CreateEditPost = React.lazy(() => import('./pages/CreateEditPost'))
+const ViewPost = React.lazy(() => import('./pages/ViewPost'))
+const ProfileLazy = React.lazy(() => import('./pages/Profile'))
+const SettingsLazy = React.lazy(() => import('./pages/Settings'))
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/my-posts" element={<MyPosts />} />
-          <Route path="/create-post" element={<CreateEditPost />} />
-          <Route path="/edit-post/:id" element={<CreateEditPost />} />
-          <Route path="/post/:slug" element={<ViewPost />} />
-          <Route path="/profile/:username" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/my-posts" element={<MyPosts />} />
+            <Route path="/create-post" element={<CreateEditPost />} />
+            <Route path="/edit-post/:id" element={<CreateEditPost />} />
+            <Route path="/post/:slug" element={<ViewPost />} />
+            <Route path="/profile/:username" element={<ProfileLazy />} />
+            <Route path="/settings" element={<SettingsLazy />} />
+          </Routes>
+        </React.Suspense>
+
         <ToastContainer
           position="top-right"
           autoClose={3000}
