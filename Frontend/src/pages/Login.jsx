@@ -34,10 +34,11 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
+      const base = import.meta.env.VITE_APP_BASE_URL || window.location.origin
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/dashboard`
+          redirectTo: `${base}/dashboard`
         }
       })
 

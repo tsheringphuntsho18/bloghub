@@ -37,11 +37,12 @@ const Signup = () => {
     setLoading(true)
 
     try {
+      const base = import.meta.env.VITE_APP_BASE_URL || window.location.origin
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
+          emailRedirectTo: `${base}/dashboard`,
           data: {
             username: username,
             full_name: username,
@@ -91,10 +92,11 @@ const Signup = () => {
 
   const handleGoogleSignup = async () => {
     try {
+      const base = import.meta.env.VITE_APP_BASE_URL || window.location.origin
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/dashboard`
+          redirectTo: `${base}/dashboard`
         }
       })
 

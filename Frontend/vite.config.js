@@ -5,25 +5,21 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ command }) => {
   const port = Number(process.env.PORT) || 5173
 
+  const allowed = process.env.VITE_ALLOWED_HOSTS ? process.env.VITE_ALLOWED_HOSTS.split(',').map(h => h.trim()) : ['localhost']
+
   return {
     plugins: [react()],
     server: {
       host: '0.0.0.0',
       port,
       strictPort: false,
-      // Move allowedHosts inside the server object here
-      allowedHosts: [
-        'bloghub-wgow.onrender.com'
-      ]
+      allowedHosts: allowed
     },
     preview: {
       host: '0.0.0.0',
       port,
       strictPort: true,
-      // It's a good idea to add it here too if you're using 'vite preview'
-      allowedHosts: [
-        'bloghub-wgow.onrender.com'
-      ]
+      allowedHosts: allowed
     }
   }
 })
